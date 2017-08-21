@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="il.ac.hit.todolist.model.User" table="UESRS">
+		<id name="userId" type="long" column="USER_ID" >
+			<generator class="increment"/>
+		</id>
+		<property name="userName">
+			<column name="USER_NAME"/>
+		</property>
+		<property name="privateName">
+			<column name="PRIVATE_NAME"/>
+		</property>
+		<property name="familyName">
+			<column name="FAMILY_NAME"/>
+		</property>
+		<property name="password">
+			<column name="PASSWORD"/>
+		</property>
+	</class>
+	<class name="il.ac.hit.todolist.model.Item" table="ITEMS">
+		<id name="itemId" type="long" column="ITEM_ID" >
+			<generator class="increment"/>
+		</id>
+		<property name="userId">
+			<column name="USER_ID"/>
+		</property>
+		<property name="date">
+			<column name="DATE"/>
+		</property>
+		<property name="content">
+			<column name="CONTENT"/>
+		</property>
+	</class>
+</hibernate-mapping>

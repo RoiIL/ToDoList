@@ -7,7 +7,7 @@
 			com.mysql.jdbc.Driver
 		</property>
 		<property name="hibernate.connection.url">
-			jdbc:mysql://localhost:3306/ToDoListDB
+			jdbc:mysql://localhost:3306/inventory
 		</property>
 		<property name="hibernate.connection.username">admin</property>
 		<property name="hibernate.connection.password">admin</property>
@@ -15,7 +15,6 @@
 		<property name="dialect">org.hibernate.dialect.MySQLDialect</property>
 		<property name="hibernate.hbm2ddl.auto">update</property>
 		<!-- Mapping files -->
-		<mapping class="il.ac.hit.todolist.model.User"/>
-		<mapping class="il.ac.hit.todolist.model.Item"/>
+		<mapping resource="ToDoListDbMapping.hbm.xml"/>
 </session-factory>
 </hibernate-configuration>

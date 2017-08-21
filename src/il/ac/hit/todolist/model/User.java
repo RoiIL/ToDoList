@@ -1,5 +1,13 @@
 package il.ac.hit.todolist.model;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
 public class User 
 {
 	private long userId;

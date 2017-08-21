@@ -2,10 +2,18 @@ package il.ac.hit.todolist.model;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
+
 public class Item 
 {
-	private long userId;
 	private long itemId;
+	private long userId;
 	private Date date;
 	private String content;
 	
@@ -22,26 +30,12 @@ public class Item
 	 * @param date
 	 * @param content
 	 */
-	public Item(long userId, long itemId, Date date, String content) {
+	public Item(long itemId, long userId, Date date, String content) {
 		super();
-		this.userId = userId;
 		this.itemId = itemId;
+		this.userId = userId;
 		this.date = date;
 		this.content = content;
-	}
-
-	/**
-	 * @return the userId
-	 */
-	public long getUserId() {
-		return userId;
-	}
-
-	/**
-	 * @param userId the userId to set
-	 */
-	public void setUserId(long userId) {
-		this.userId = userId;
 	}
 
 	/**
@@ -56,6 +50,20 @@ public class Item
 	 */
 	public void setItemId(long itemId) {
 		this.itemId = itemId;
+	}
+	
+	/**
+	 * @return the userId
+	 */
+	public long getUserId() {
+		return userId;
+	}
+
+	/**
+	 * @param userId the userId to set
+	 */
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
 	/**
