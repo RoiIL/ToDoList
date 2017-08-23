@@ -1,48 +1,78 @@
 package il.ac.hit.todolist.model;
 
-import java.util.Date;
-
+import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
 public class HibernateToDoListDAO implements IToDoListDAO
 {
-	public static void main(String[] args) 
+	public static HibernateToDoListDAO instance = new HibernateToDoListDAO();
+	SessionFactory factory = new AnnotationConfiguration().configure().buildSessionFactory();
+	
+	private HibernateToDoListDAO()
 	{
-		//creating factory for getting sessions
-		SessionFactory factory = new AnnotationConfiguration().configure().buildSessionFactory();
-		//creating a new session for adding products
-		Session session = factory.openSession();
-		session.beginTransaction();
-		User user = new User(233, "roiial", "roi", "israel", "123");
-		Date date = new Date(20, 8, 17);
-		Item item = new Item(20, 233, date, "Hello everyone, how you doing?");
-		session.save(user);
-		session.save(item);
-		
-		session.getTransaction().commit();
-		session.close();
+	}
+	
+	public static HibernateToDoListDAO getInstance()
+	{
+		return instance;
 	}
 	
 	@Override
 	public boolean addUser(User newUser) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (!isUserExist(newUser))
+		{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.save(newUser);
+			session.getTransaction().commit();
+			session.close();
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
 	public boolean updateUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (!isUserExist(user))
+		{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.update(user);
+			session.getTransaction().commit();
+			session.close();
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
 	public boolean deleteUser(User user) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (!isUserExist(user))
+		{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.delete(user);
+			session.getTransaction().commit();
+			session.close();
+			result = true;
+		}
+		return result;
 	}
 
+	@Override
+	public boolean isUserExist(User user) {
+		Session session = factory.openSession();
+		Object object = session.get(user.getClass(), user.getUserId());
+		session.close();
+		return object != null;
+	}
+	
 	@Override
 	public boolean addItem(Item newItem) {
 		// TODO Auto-generated method stub
@@ -60,5 +90,4 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		// TODO Auto-generated method stub
 		return false;
 	}
-	
 }

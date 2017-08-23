@@ -11,6 +11,8 @@ public interface IToDoListDAO
 	
 	public boolean deleteUser(User user);
 	
+	public boolean isUserExist(User user);
+	
 	//////////////////////////////////////////////////////////////////
 	
 	/**
