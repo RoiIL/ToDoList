@@ -38,7 +38,7 @@ public class HibernateToDoListDAO implements IToDoListDAO
 	@Override
 	public boolean updateUser(User user) {
 		boolean result = false;
-		if (!isUserExist(user))
+		if (isUserExist(user))
 		{
 			Session session = factory.openSession();
 			session.beginTransaction();
@@ -53,7 +53,7 @@ public class HibernateToDoListDAO implements IToDoListDAO
 	@Override
 	public boolean deleteUser(User user) {
 		boolean result = false;
-		if (!isUserExist(user))
+		if (isUserExist(user))
 		{
 			Session session = factory.openSession();
 			session.beginTransaction();
@@ -74,20 +74,64 @@ public class HibernateToDoListDAO implements IToDoListDAO
 	}
 	
 	@Override
+	public User getUserById(long userId) {
+		Session session = factory.openSession();
+		User user = (User) session.get(User.class, userId);
+		session.close();
+		
+		return user;
+	}
+	
+	@Override
 	public boolean addItem(Item newItem) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (!isItemExist(newItem) && (null != getUserById(newItem.getUserId())))
+		{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.save(newItem);
+			session.getTransaction().commit();
+			session.close();
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
 	public boolean updateItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (isItemExist(item))
+		{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.update(item);
+			session.getTransaction().commit();
+			session.close();
+			result = true;
+		}
+		return result;
 	}
 
 	@Override
 	public boolean deleteItem(Item item) {
-		// TODO Auto-generated method stub
-		return false;
+		boolean result = false;
+		if (isItemExist(item))
+		{
+			Session session = factory.openSession();
+			session.beginTransaction();
+			session.delete(item);
+			session.getTransaction().commit();
+			session.close();
+			result = true;
+		}
+		return result;
+	}
+
+	@Override
+	public boolean isItemExist(Item item) {
+		Session session = factory.openSession();
+		Object object = session.get(item.getClass(), item.getUserId());
+		session.close();
+		return object != null;
 	}
 }

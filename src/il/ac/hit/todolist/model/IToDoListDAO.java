@@ -13,6 +13,8 @@ public interface IToDoListDAO
 	
 	public boolean isUserExist(User user);
 	
+	public User getUserById(long userId);
+	
 	//////////////////////////////////////////////////////////////////
 	
 	/**
@@ -23,4 +25,6 @@ public interface IToDoListDAO
 	public boolean updateItem(Item item);
 	
 	public boolean deleteItem(Item item);
+	
+	public boolean isItemExist(Item item);
 }
