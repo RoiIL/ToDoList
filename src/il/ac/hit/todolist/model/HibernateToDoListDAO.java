@@ -220,6 +220,31 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		
 		return result;
 	}
+	
+	@Override
+	public User getAuthenticatedUser(String userName, String password) throws ToDoListException {
+		User user = null;
+		Session session = null;
+		
+		try
+		{
+			session = factory.openSession();
+			Query query = session.createQuery("FROM User WHERE userName = :userName AND password = :password");
+			query.setParameter("userName", userName);
+			query.setParameter("password", password);
+			user = (User)query.uniqueResult();
+		}
+		catch(HibernateException exception)
+		{
+			throw new ToDoListException(exception.getMessage(), exception.getCause());
+		} 
+		finally
+		{
+			closeSession(session);
+		}
+		
+		return user;
+	}
 
 	@Override
 	public boolean updateItem(Item item) throws ToDoListException {

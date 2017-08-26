@@ -15,6 +15,15 @@ public interface IToDoListDAO
 	
 	public boolean isUserExist(User user) throws ToDoListException;
 	
+	/**
+	 * Authenticate user by user name and password.
+	 * @param userName
+	 * @param password
+	 * @return Authenticated user, null otherwise
+	 * @throws ToDoListException 
+	 */
+	public User getAuthenticatedUser(String userName, String password) throws ToDoListException;
+	
 	public User getUserById(long userId) throws ToDoListException;
 	
 	public List<Item> getUserItems(long userId) throws ToDoListException;

@@ -36,7 +36,18 @@ public class TestApp {
 			System.out.println(item.getContent());
 		}
 		
-		hibernate.deleteUser(user1);
+		User authenticateUser = hibernate.getAuthenticatedUser("roiial", "111");
+		if (null == authenticateUser)
+		{
+			System.out.println("First try to authentication failed succesfully");
+		}
+		authenticateUser = hibernate.getAuthenticatedUser("roiial", "222");
+		if (null != authenticateUser)
+		{
+			System.out.println("Second authentication succeded for " + authenticateUser.getPrivateName());
+		}
+		
+		//hibernate.deleteUser(user1);
 	}
 
 }
