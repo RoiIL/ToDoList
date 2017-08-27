@@ -10,15 +10,30 @@ import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.AnnotationConfiguration;
 
+/**
+ * @author Vladimir Shalmai & Roi Israel
+ */
+
 public class HibernateToDoListDAO implements IToDoListDAO
 {
+	
+	/**
+	 * the singleton instance of this class 
+	 */
 	public static HibernateToDoListDAO instance = new HibernateToDoListDAO();
 	SessionFactory factory = new AnnotationConfiguration().configure().buildSessionFactory();
 	
+	/**
+	 * private default constructor to prevent instances of this class
+	 */
 	private HibernateToDoListDAO()
 	{
 	}
 	
+	/**
+	 * the interface for using the HibernateToDoListDAO class
+	 * @return the class instance
+	 */
 	public static HibernateToDoListDAO getInstance()
 	{
 		return instance;
@@ -88,8 +103,8 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		Session session = null;
 		Transaction transaction = null;
 		
-		if (isUserExist(user))
 		{
+			if (isUserExist(user))
 			try 
 			{
 				session = factory.openSession();
@@ -328,6 +343,11 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return exist;
 	}
 	
+	/**
+	 * closing the given session
+	 * @param session
+	 * @throws ToDoListException
+	 */
 	private void closeSession(Session session) throws ToDoListException
 	{
 		if (null != session)
@@ -343,6 +363,10 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		}
 	}
 	
+	/**
+	 * roll back the transaction if any Hibernate exception was thrown 
+	 * @param transaction
+	 */
 	private void rollbackTrasaction(Transaction transaction)
 	{
 		if (null != transaction)
