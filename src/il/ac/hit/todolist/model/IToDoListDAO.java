@@ -1,6 +1,6 @@
 package il.ac.hit.todolist.model;
-
 import java.util.List;
+
 
 public interface IToDoListDAO 
 {
