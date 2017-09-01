@@ -1,5 +1,6 @@
 package il.ac.hit.todolist.model;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -13,18 +14,19 @@ public class TestApp {
 		User user1 = new User(1, "roiial", "Roi", "Israel", "222");
 		HibernateToDoListDAO hibernate = HibernateToDoListDAO.getInstance();
 		
+		hibernate.deleteUser(user1);
 		System.out.println(hibernate.isUserExist(user1));
 		hibernate.addUser(user1);
 		System.out.println(hibernate.isUserExist(user1));
 		
-		Item item1 = new Item(1, 1, new Date(12, 12, 12), "Hello EveryOne");
+		Item item1 = new Item(1, 1, "Hello EveryOne");
 		hibernate.addItem(item1);
 		item1.setContent("Hello everyone :)");
 		hibernate.updateItem(item1);
 
-		Item item2 = new Item(2, 1, new Date(12, 12, 12), "Second");
-		Item item3 = new Item(3, 1, new Date(13, 12, 12), "Third");
-		Item item4 = new Item(4, 1, new Date(14, 12, 12), "Forth");
+		Item item2 = new Item(2, 1, "Second");
+		Item item3 = new Item(3, 1, "Third");
+		Item item4 = new Item(4, 1, "Forth");
 		
 		hibernate.addItem(item2);
 		hibernate.addItem(item3);

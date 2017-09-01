@@ -8,12 +8,40 @@ import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+/**
+ * @author IR
+ *
+ */
+/**
+ * @author IR
+ *
+ */
 public class User 
 {
+	
+	/**
+	 * the user id, act as the key for the data base
+	 */
 	private long userId;
+	
+	/**
+	 * the user's user name
+	 */
 	private String userName;
+	
+	/**
+	 * the user's private name
+	 */
 	private String privateName;
+	
+	/**
+	 * the user's family name
+	 */
 	private String familyName;
+	
+	/**
+	 * the user's password
+	 */
 	private String password;
 	
 	public User()

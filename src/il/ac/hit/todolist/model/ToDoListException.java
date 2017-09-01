@@ -7,9 +7,13 @@ public class ToDoListException extends Exception
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * ToDoListException - an exception wrapper for the Hibernate framework 
+	 * @param message
+	 * @param cause
+	 */
 	public ToDoListException(String message, Throwable cause)
-	{
-		
+	{		
 		super("ToDoList Exception: " + message, cause);
 	}
 }
