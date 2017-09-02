@@ -9,19 +9,20 @@
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
-<body background-image: url("https://i.ytimg.com/vi/w7ma8mweDGw/maxresdefault.jpg")>
+<body>
 	<div data-role="page" id="index">
  		<div data-role="main" class="ui-content" align="center">
     		<h1>Welcome!</h1>
-    		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Login</a>
-    		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Sign Up</a>
+    		<a href="login.jsp" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Login</a>
+    		<a href="createAccount.jsp" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Create Account</a>
+    		<br>
     		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Search</a>
 			<a href="#bing" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Bing</a>
-			<a href="#about" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">About</a>  		
+			<a href="#video" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Video</a>  		
   		</div>
 	</div>
 
-	<div data-role="page" id="about">
+	<div data-role="page" id="video">
 	<div data-role="header">
 	<h1>Testing the dialog</h1>
 	
