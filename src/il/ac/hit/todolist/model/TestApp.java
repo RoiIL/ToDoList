@@ -1,7 +1,5 @@
 package il.ac.hit.todolist.model;
 
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.List;
 
 import il.ac.hit.todolist.model.HibernateToDoListDAO;
@@ -46,7 +44,7 @@ public class TestApp {
 		authenticateUser = hibernate.getAuthenticatedUser("roiial", "222");
 		if (null != authenticateUser)
 		{
-			System.out.println("Second authentication succeded for " + authenticateUser.getPrivateName());
+			System.out.println("Second authentication succeded for " + authenticateUser.getLastName());
 		}
 		
 		//hibernate.deleteUser(user1);

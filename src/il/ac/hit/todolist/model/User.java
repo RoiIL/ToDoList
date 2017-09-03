@@ -1,13 +1,9 @@
 package il.ac.hit.todolist.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.GenericGenerator;
-
+/**
+ * @author IR
+ *
+ */
 /**
  * @author IR
  *
@@ -18,7 +14,6 @@ import org.hibernate.annotations.GenericGenerator;
  */
 public class User 
 {
-	
 	/**
 	 * the user id, act as the key for the data base
 	 */
@@ -30,30 +25,40 @@ public class User
 	private String userName;
 	
 	/**
-	 * the user's private name
+	 * the user's first name
 	 */
-	private String privateName;
+	private String firstName;
 	
 	/**
-	 * the user's family name
+	 * the user's last name
 	 */
-	private String familyName;
+	private String lastName;
 	
 	/**
 	 * the user's password
 	 */
 	private String password;
 	
+	/**
+	 * Default constructor
+	 */
 	public User()
 	{
 	}
 	
-	public User(long userId, String userName, String privateName, String familyName, String password)
+	/**
+	 * @param userId
+	 * @param userName
+	 * @param firstName
+	 * @param lastName
+	 * @param password
+	 */
+	public User(long userId, String userName, String firstName, String lastName, String password)
 	{
 		this.userId = userId;
 		this.userName = userName;
-		this.privateName = privateName;
-		this.familyName = familyName;
+		this.firstName = firstName;
+		this.lastName = lastName;
 		this.password = password;
 	}
 
@@ -86,31 +91,31 @@ public class User
 	}
 
 	/**
-	 * @return the privateName
+	 * @return the firstName
 	 */
-	public String getPrivateName() {
-		return privateName;
+	public String getFirstName() {
+		return firstName;
 	}
 
 	/**
-	 * @param privateName the privateName to set
+	 * @param firstName the firstName to set
 	 */
-	public void setPrivateName(String privateName) {
-		this.privateName = privateName;
+	public void setFirstName(String privateName) {
+		this.firstName = privateName;
 	}
 
 	/**
-	 * @return the familyName
+	 * @return the lastName
 	 */
-	public String getFamilyName() {
-		return familyName;
+	public String getLastName() {
+		return lastName;
 	}
 
 	/**
-	 * @param familyName the familyName to set
+	 * @param lastName the lastName to set
 	 */
-	public void setFamilyName(String familyName) {
-		this.familyName = familyName;
+	public void setLastName(String familyName) {
+		this.lastName = familyName;
 	}
 
 	/**

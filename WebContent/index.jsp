@@ -18,7 +18,8 @@
     		<br>
     		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Search</a>
 			<a href="#bing" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Bing</a>
-			<a href="#video" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Video</a>  		
+			<a href="#video" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Video</a>
+			<a href="addItem.jsp" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Add Item</a>		
   		</div>
 	</div>
 

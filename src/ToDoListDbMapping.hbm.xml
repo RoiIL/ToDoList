@@ -10,11 +10,11 @@
 		<property name="userName">
 			<column name="USER_NAME"/>
 		</property>
-		<property name="privateName">
-			<column name="PRIVATE_NAME"/>
+		<property name="firstName">
+			<column name="FIRST_NAME"/>
 		</property>
-		<property name="familyName">
-			<column name="FAMILY_NAME"/>
+		<property name="lastName">
+			<column name="LAST_NAME"/>
 		</property>
 		<property name="password">
 			<column name="PASSWORD"/>
