@@ -39,6 +39,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return instance;
 	}
 	
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#addUser(il.ac.hit.todolist.model.User)
+	 */
 	@Override
 	public boolean addUser(User newUser) throws ToDoListException {
 		boolean result = false;
@@ -68,6 +71,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#updateUser(il.ac.hit.todolist.model.User)
+	 */
 	@Override
 	public boolean updateUser(User user) throws ToDoListException {
 		boolean result = false;
@@ -97,6 +103,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#deleteUser(il.ac.hit.todolist.model.User)
+	 */
 	@Override
 	public boolean deleteUser(User user) throws ToDoListException {
 		boolean result = false;
@@ -132,6 +141,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#isUserExist(il.ac.hit.todolist.model.User)
+	 */
 	@Override
 	public boolean isUserExist(User user) throws ToDoListException {
 		boolean exist = false;
@@ -154,6 +166,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return exist;
 	}
 	
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#getUserById(long)
+	 */
 	@Override
 	public User getUserById(long userId) throws ToDoListException {
 		Session session = null;
@@ -176,6 +191,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return user;
 	}
 	
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#getUserItems(long)
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Item> getUserItems(long userId) throws ToDoListException {
@@ -206,6 +224,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return listOfItems;
 	}
 	
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#addItem(il.ac.hit.todolist.model.Item)
+	 */
 	@Override
 	public boolean addItem(Item newItem) throws ToDoListException {
 		boolean result = false;
@@ -236,6 +257,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return result;
 	}
 	
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#getAuthenticatedUser(java.lang.String, java.lang.String)
+	 */
 	@Override
 	public User getAuthenticatedUser(String userName, String password) throws ToDoListException {
 		User user = null;
@@ -261,6 +285,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return user;
 	}
 
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#updateItem(il.ac.hit.todolist.model.Item)
+	 */
 	@Override
 	public boolean updateItem(Item item) throws ToDoListException {
 		boolean result = false;
@@ -290,6 +317,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#deleteItem(il.ac.hit.todolist.model.Item)
+	 */
 	@Override
 	public boolean deleteItem(Item item) throws ToDoListException {
 		boolean result = false;
@@ -319,6 +349,9 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		return result;
 	}
 
+	/* (non-Javadoc)
+	 * @see il.ac.hit.todolist.model.IToDoListDAO#isItemExist(il.ac.hit.todolist.model.Item)
+	 */
 	@Override
 	public boolean isItemExist(Item item) throws ToDoListException {
 		boolean exist = false;

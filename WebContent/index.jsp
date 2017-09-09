@@ -1,19 +1,19 @@
-<%@ page language="java" contentType="text/html; charset=windows-1255"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="windows-1255"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=windows-1255">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>To Do List</title>
-<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
-<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 </head>
 <body>
 	<div data-role="page" id="index">
  		<div data-role="main" class="ui-content" align="center">
     		<h1>Welcome!</h1>
-    		<a href="login.jsp" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Login</a>
+    		<a href="controller/login" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Login</a>
     		<a href="createAccount.jsp" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Create Account</a>
     		<br>
     		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Search</a>
