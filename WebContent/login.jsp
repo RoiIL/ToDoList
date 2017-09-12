@@ -16,7 +16,7 @@
 	</div>
 	
 	<div data-role="content" align="center">
-		<form action="login" method="get">
+		<form action="/ToDoList/controller/login" method="post">
 		<%
 			if (request.getAttribute("message") != null)
 			{
@@ -28,7 +28,9 @@
   			<label for="password" class="ui-hidden-accessible">Password:</label>
   			<input type="password" name="password" id="password" placeholder="Password..." data-clear-btn="true">
   			<input type="submit" value="Log in" data-icon="check" data-iconpos="right">
+  			<input type="submit" formaction="/ToDoList/controller/index" name="cancel" value="Cancel" data-icon="delete" data-iconpos="right">
 		</form>
+		
 	</div></div></div>
 </body>
 </html>

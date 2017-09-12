@@ -6,6 +6,10 @@ import java.util.List;
  * @author Roi Israel & Vladimir Shalmai
  * The IToDoListDAO interface for using Hibernate with the ToDoList app database.  
  */
+/**
+ * @author IR
+ *
+ */
 public interface IToDoListDAO 
 {
 	/**
@@ -96,4 +100,11 @@ public interface IToDoListDAO
 	 * @throws ToDoListException
 	 */
 	public boolean isItemExist(Item item) throws ToDoListException;
+	
+	/**
+	 * @param itemId
+	 * @return
+	 * @throws ToDoListException
+	 */
+	public Item getItem(long userId, long itemId) throws ToDoListException;
 }

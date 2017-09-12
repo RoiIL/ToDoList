@@ -407,4 +407,20 @@ public class HibernateToDoListDAO implements IToDoListDAO
 			transaction.rollback();
 		}
 	}
+
+	@Override
+	public Item getItem(long userId, long itemId) throws ToDoListException 
+	{
+		List<Item> listOfItems = instance.getUserItems(userId);
+		Item returnItem = null;
+		for (Item item : listOfItems) 
+		{
+			if (item.getItemId() == itemId)
+			{
+				returnItem = item;
+			}
+		}
+		
+		return returnItem;
+	}
 }

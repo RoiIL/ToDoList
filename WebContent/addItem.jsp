@@ -14,11 +14,17 @@
 	<div data-role="header">
 		<div align="center" style="font-size:15px;"><br><h1>What are you going to do?</h1></div>
 	<div data-role="content" align="center">
-		<form method="post" action="/">
+		<form action="/ToDoList/controller/addItem" method="post">
+		<%
+			if (request.getAttribute("message") != null)
+			{
+				out.println((String)request.getAttribute("message"));
+			}
+		%>
   			<label for="userName" class="ui-hidden-accessible">User name:</label>
-  			<textarea name="addinfo" id="info"></textarea>
+  			<textarea name="itemContent" id="info"></textarea>
   			<input type="submit" value="Post It!" data-icon="check" data-iconpos="right">
-  			<a href="index.jsp" class="ui-btn ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-right">Cancel</a>
+  			<input type="submit" formaction="/ToDoList/controller/userPage" name="cancel" value="Cancel" data-icon="delete" data-iconpos="right">
 		</form>
 	</div></div></div>
 </body>

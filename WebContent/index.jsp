@@ -13,13 +13,12 @@
 	<div data-role="page" id="index">
  		<div data-role="main" class="ui-content" align="center">
     		<h1>Welcome!</h1>
-    		<a href="controller/login" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Login</a>
-    		<a href="createAccount.jsp" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Create Account</a>
+    		<a href="/ToDoList/controller/login" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Log In</a>
+    		<a href="signup.jsp" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Sign Up</a>
     		<br>
     		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Search</a>
 			<a href="#bing" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Bing</a>
 			<a href="#video" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Video</a>
-			<a href="addItem.jsp" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Add Item</a>		
   		</div>
 	</div>
 

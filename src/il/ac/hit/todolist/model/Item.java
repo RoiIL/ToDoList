@@ -40,9 +40,8 @@ public class Item
 	 * @param itemId
 	 * @param content
 	 */
-	public Item(long itemId, long userId, String content) {
+	public Item(long userId, String content) {
 		super();
-		setItemId(itemId);
 		setUserId(userId);
 		setDate(new Date());
 		setContent(content);

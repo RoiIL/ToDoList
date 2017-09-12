@@ -45,9 +45,8 @@ public class User
 	 * @param lastName
 	 * @param password
 	 */
-	public User(long userId, String userName, String firstName, String lastName, String password)
+	public User(String userName, String firstName, String lastName, String password)
 	{
-		setUserId(userId);
 		setUserName(userName);
 		setFirstName(firstName);
 		setLastName(lastName);

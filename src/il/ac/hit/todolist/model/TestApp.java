@@ -9,7 +9,7 @@ import il.ac.hit.todolist.model.Item;
 public class TestApp {
 
 	public static void main(String[] args) throws ToDoListException {
-		User user1 = new User(1, "roiial", "Roi", "Israel", "222");
+		User user1 = new User("roiial", "Roi", "Israel", "222");
 		HibernateToDoListDAO hibernate = HibernateToDoListDAO.getInstance();
 		
 		hibernate.deleteUser(user1);
@@ -17,14 +17,14 @@ public class TestApp {
 		hibernate.addUser(user1);
 		System.out.println(hibernate.isUserExist(user1));
 		
-		Item item1 = new Item(1, 1, "Hello EveryOne");
+		Item item1 = new Item(1, "Hello EveryOne");
 		hibernate.addItem(item1);
 		item1.setContent("Hello everyone :)");
 		hibernate.updateItem(item1);
 
-		Item item2 = new Item(2, 1, "Second");
-		Item item3 = new Item(3, 1, "Third");
-		Item item4 = new Item(4, 1, "Forth");
+		Item item2 = new Item(1, "Second");
+		Item item3 = new Item(1, "Third");
+		Item item4 = new Item(1, "Forth");
 		
 		hibernate.addItem(item2);
 		hibernate.addItem(item3);

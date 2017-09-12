@@ -13,7 +13,7 @@
 <body>
 	<div data-role="page" id="userPage">
 	<div data-role="header">
-	<div align="center" style="font-size:15px;">
+		<div align="center" style="font-size:15px;">
 		<%
 			String userFirstName = (String)request.getAttribute("userFirstName");
 			out.println("<h1>Welcome " + userFirstName + "</h1>");
@@ -26,11 +26,42 @@
 			<%
 				List<Item> userItems = (List<Item>)request.getAttribute("userItems");
 				for (Item item : userItems)
-				{
-					out.println("<li>" + item.getContent() + "</li>");
-				}
+				{ %>
+				<li>						
+						<table>
+							<tr>
+								<td>
+								<%
+									out.println(item.getContent());
+									String itemId = Long.toString(item.getItemId());
+								%>
+								</td>
+								<td><form action="/ToDoList/controller/deleteItem" method="post">
+								<input type="hidden" value="<%=item.getItemId() %>" name="itemId">
+								<input type="submit" value="Delete" data-icon="delete" data-iconpos="right"></form></td>												
+							</tr>						
+						</table>
+					</a>
+				</li>
+				<%}
 			%>
 		</ul>
+		
+		<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
+   		<h3>Purchase Album?</h3>
+		<p>Your download will begin immediately on your mobile device when you purchase.</p>
+    	<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-b ui-icon-check ui-btn-icon-left ui-btn-inline ui-mini">Buy: $10.99</a>
+   		<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
+		</div>
+		
+		</br>
+		<a href="/ToDoList/controller/addItem" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-right">Add Item</a>
+		<a href="/ToDoList/controller/index" class="ui-btn ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-right">Log out</a>
+		
 	</div>
+	</div>
+	
+	<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop" data-icon="edit" data-inline="true"></a>
+	<td><a href="/ToDoList/controller/deleteItem" class="ui-icon ui-btn-inline ui-icon-plusthick ui-icon-delete ui-btn-icon-right"></a></td>
 </body>
 </html>
