@@ -12,8 +12,7 @@
 <body>
 	<div data-role="page" id="login">
 	<div data-role="header">
-		<div align="center" style="font-size:15px;"><br><h1>Hi you!</h1>
-	</div>
+		<div align="center" style="font-size:15px;"><br><h1>Hi you!</h1></div>
 	
 	<div data-role="content" align="center">
 		<form action="/ToDoList/controller/login" method="post">
@@ -34,5 +33,3 @@
 	</div></div></div>
 </body>
 </html>
-
-<!-- <div style="width:250px;"></div> -->

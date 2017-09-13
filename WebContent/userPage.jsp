@@ -21,27 +21,39 @@
 		</div>
 	</div>
 	
-	<div data-role="content" align="center">
+	<div data-role="content" style="font-size:20px;" align="center">
 		<ul data-role="listview">
 			<%
 				List<Item> userItems = (List<Item>)request.getAttribute("userItems");
 				for (Item item : userItems)
 				{ %>
 				<li>						
-						<table>
-							<tr>
-								<td>
-								<%
-									out.println(item.getContent());
-									String itemId = Long.toString(item.getItemId());
-								%>
-								</td>
-								<td><form action="/ToDoList/controller/deleteItem" method="post">
-								<input type="hidden" value="<%=item.getItemId() %>" name="itemId">
-								<input type="submit" value="Delete" data-icon="delete" data-iconpos="right"></form></td>												
-							</tr>						
-						</table>
-					</a>
+					<table>
+						<tr>
+							<td>
+							<%
+								out.println(item.getContent());
+							%>
+							</td>
+							
+							<td>
+								<form action="/ToDoList/controller/deleteItem" method="post">
+								<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+									<input type="hidden" value="<%=item.getItemId() %>" name="itemId">
+									<input type="submit" value="Delete" data-icon="delete" data-iconpos="notext">
+								</fieldset>
+								</form>
+							</td>
+							<td>
+								<form action="/ToDoList/controller/updateItem" method="post">
+								<fieldset data-role="controlgroup" data-type="horizontal" data-mini="true">
+									<input type="hidden" value="<%=item.getItemId() %>" name="itemId">
+									<input type="submit" value="Edit" data-icon="edit" data-iconpos="notext">
+								</fieldset>
+								</form>
+							</td>											
+						</tr>						
+					</table>
 				</li>
 				<%}
 			%>

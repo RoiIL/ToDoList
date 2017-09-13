@@ -25,9 +25,6 @@ public class AppRouter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private IToDoListDAO dao = null;
 	RequestDispatcher dispatcher = null;
-	User user = null;
-	String userName = null;
-	String password = null;
 	String jspPage = "/index.jsp";
        
     /**
@@ -52,14 +49,20 @@ public class AppRouter extends HttpServlet {
 		case "/login":
 			handleLoginPage(request, response);
 			break;
+		case "/signup":
+			handleSignUpPage(request, response);
+			break;
 		case "/addItem":
 			handleAddItemPage(request, response);
 			break;
 		case "/userPage":
-			jspPage = "/userPage.jsp";
+			handleUserPage(request, response);
 			break;
 		case "/deleteItem":
 			handleDeleteItem(request, response);
+			break;
+		case "/updateItem":
+			handleUpdateItem(request, response);
 			break;
 			
 		}
@@ -77,8 +80,8 @@ public class AppRouter extends HttpServlet {
 	private void handleLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		jspPage = "/login.jsp";
-		userName = request.getParameter("userName");
-		password = request.getParameter("password");
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
 		
 		if (userName != null || password != null)
 		{
@@ -90,14 +93,12 @@ public class AppRouter extends HttpServlet {
 			else
 			{
 				try {
-					user = dao.getAuthenticatedUser(userName, password);
+					User user = dao.getAuthenticatedUser(userName, password);
 					
 					if (null != user)
 					{
-						List<Item> userItems = dao.getUserItems(user.getUserId());
-						request.setAttribute("userItems", userItems);
-						request.setAttribute("userFirstName", user.getFirstName());
-						jspPage = "/userPage.jsp";
+						request.getSession().setAttribute("userId", user.getUserId());
+						handleUserPage(request, response);
 					}
 					else
 					{
@@ -110,22 +111,67 @@ public class AppRouter extends HttpServlet {
 		}
 	}
 	
+
+	private void handleSignUpPage(HttpServletRequest request, HttpServletResponse response) {
+		jspPage = "/signup.jsp";
+		String firstName = request.getParameter("firstName");
+		String lastName = request.getParameter("lastName");
+		String userName = request.getParameter("userName");
+		String password = request.getParameter("password");
+		
+		if (firstName != null || lastName != null || userName != null || password != null)
+		{
+			if (firstName.isEmpty() || lastName.isEmpty() || userName.isEmpty() || password.isEmpty())
+			{
+				String message = "Ooops, look like you didn't fill the blanks :)";
+				request.setAttribute("message", message);
+			}
+			else
+			{
+				try {
+					User newUser = new User(userName, firstName, lastName, password);
+					request.getSession().setAttribute("userId", newUser.getUserId());
+					dao.addUser(newUser);
+					try {
+						handleLoginPage(request, response);
+					} catch (ServletException | IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+				} catch (ToDoListException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private void handleUserPage(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			Long userId = (Long)request.getSession().getAttribute("userId");
+			List<Item> userItems = dao.getUserItems(userId);
+			request.setAttribute("userItems", userItems);
+			User user = dao.getUserById(userId);
+			request.setAttribute("userFirstName", user.getFirstName());
+			jspPage = "/userPage.jsp";
+		} catch (ToDoListException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	private void handleAddItemPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		jspPage = "/addItem.jsp";
 		String itemContent = request.getParameter("itemContent");
 		
-		if (null != user && null != itemContent)
+		if (null != itemContent)
 		{
 			if (!itemContent.isEmpty())
 			{
-				Item newItem = new Item(user.getUserId(), itemContent);
+				Long userId = (Long)request.getSession().getAttribute("userId");
+				Item newItem = new Item(userId, itemContent);
 				try {
 					dao.addItem(newItem);
-					List<Item> userItems = dao.getUserItems(user.getUserId());
-					request.setAttribute("userItems", userItems);
-					request.setAttribute("userFirstName", user.getFirstName());
-					jspPage = "/userPage.jsp";
+					handleUserPage(request, response);
 				} catch (ToDoListException e) {
 					e.printStackTrace();
 				}
@@ -142,13 +188,14 @@ public class AppRouter extends HttpServlet {
 		jspPage = "/userPage.jsp";
 		String strItemId = request.getParameter("itemId");
 		
-		if (null != user && null != strItemId)
+		if (null != strItemId)
 		{
 			if (!strItemId.isEmpty())
 			{
 				try {
+					Long userId = (Long)request.getSession().getAttribute("userId");
 					long itemId = Long.parseLong(strItemId);
-					Item item = dao.getItem(user.getUserId(), itemId);
+					Item item = dao.getItem(userId, itemId);
 					if (null != item)
 					{
 						dao.deleteItem(item);
@@ -158,16 +205,55 @@ public class AppRouter extends HttpServlet {
 				}
 			}
 		}
+		handleUserPage(request, response);
+	}
+	
+	private void handleUpdateItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
+	{
+		jspPage = "/updateItem.jsp";
+		String updateContent = request.getParameter("updateContent");
+		String strItemId = request.getParameter("itemId");
+		long itemId = Long.parseLong(strItemId);
 		
-		List<Item> userItems = null;
-		try {
-			userItems = dao.getUserItems(user.getUserId());
-			request.setAttribute("userItems", userItems);
-			request.setAttribute("userFirstName", user.getFirstName());
-			jspPage = "/userPage.jsp";
-		} catch (ToDoListException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (null != updateContent)
+		{
+			if (!updateContent.isEmpty())
+			{
+				try {
+					Long userId = (Long)request.getSession().getAttribute("userId");
+					Item updateItem = dao.getItem(userId, itemId);
+					updateItem.setContent(updateContent);
+					dao.updateItem(updateItem);
+					handleUserPage(request, response);
+				} catch (ToDoListException e) {
+					e.printStackTrace();
+				}
+			}
+			else
+			{
+				request.setAttribute("message", "Ooops... You did't change your plan... </br> cancel maybe?");
+				try {
+					Long userId = (Long)request.getSession().getAttribute("userId");
+					Item curItem = dao.getItem(userId, itemId);
+					String curContent = curItem.getContent();
+					request.setAttribute("itemContent", curContent);
+					request.setAttribute("itemId", strItemId);
+				} catch (ToDoListException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		else
+		{
+			try {
+				Long userId = (Long)request.getSession().getAttribute("userId");
+				Item curItem = dao.getItem(userId, itemId);
+				String curContent = curItem.getContent();
+				request.setAttribute("itemContent", curContent);
+				request.setAttribute("itemId", strItemId);
+			} catch (ToDoListException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
