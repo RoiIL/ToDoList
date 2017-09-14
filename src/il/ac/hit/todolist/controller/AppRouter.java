@@ -20,6 +20,10 @@ import il.ac.hit.todolist.model.User;
 /**
  * Servlet implementation class AppRouter
  */
+/**
+ * @author IR
+ *
+ */
 @WebServlet("/controller/*")
 public class AppRouter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -36,6 +40,7 @@ public class AppRouter extends HttpServlet {
     }
 
 	/**
+	 * This method act like the router routing all post and get requests to be handles acordingly
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -64,7 +69,6 @@ public class AppRouter extends HttpServlet {
 		case "/updateItem":
 			handleUpdateItem(request, response);
 			break;
-			
 		}
 		dispatcher = getServletContext().getRequestDispatcher(jspPage);
 		dispatcher.forward(request, response);
@@ -77,6 +81,13 @@ public class AppRouter extends HttpServlet {
 		doGet(request, response);
 	}
 	
+	/**
+	 * Handle the log in session, authenticating the user and forwading to it's page
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void handleLoginPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		jspPage = "/login.jsp";
@@ -111,7 +122,11 @@ public class AppRouter extends HttpServlet {
 		}
 	}
 	
-
+	/**
+	 * Handling the sign up request for the new user
+	 * @param request
+	 * @param response
+	 */
 	private void handleSignUpPage(HttpServletRequest request, HttpServletResponse response) {
 		jspPage = "/signup.jsp";
 		String firstName = request.getParameter("firstName");
@@ -144,6 +159,11 @@ public class AppRouter extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Handling the user page, displaying the user's item allowing to add item, delete and update. 
+	 * @param request
+	 * @param response
+	 */
 	private void handleUserPage(HttpServletRequest request, HttpServletResponse response) {
 		try {
 			Long userId = (Long)request.getSession().getAttribute("userId");
@@ -157,6 +177,13 @@ public class AppRouter extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Handle adding and item if new content was typed
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void handleAddItemPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		String itemContent = request.getParameter("itemContent");
@@ -181,6 +208,11 @@ public class AppRouter extends HttpServlet {
 		}
 	}
 	
+	/**
+	 * Deleting the chosen item
+	 * @param request
+	 * @param response
+	 */
 	private void handleDeleteItem(HttpServletRequest request, HttpServletResponse response) 
 	{	
 		jspPage = "/userPage.jsp";
@@ -206,6 +238,13 @@ public class AppRouter extends HttpServlet {
 		handleUserPage(request, response);
 	}
 	
+	/**
+	 * Updating the chosen item if new content was typed
+	 * @param request
+	 * @param response
+	 * @throws ServletException
+	 * @throws IOException
+	 */
 	private void handleUpdateItem(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
 		jspPage = "/updateItem.jsp";
