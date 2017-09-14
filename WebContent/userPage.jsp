@@ -33,7 +33,9 @@
 							<td>
 							<%
 								out.println(item.getContent());
+								out.println("</br>");
 							%>
+							<div data-role="content" style="font-size:12px;" align="left"><%=item.getDate().toGMTString()%></div>
 							</td>
 							
 							<td>
@@ -59,6 +61,15 @@
 			%>
 		</ul>
 		
+		</br>
+		
+		<form action="/ToDoList/controller/addItem" method="post">
+  			<input type="submit" value="Add Item" data-icon="check" data-iconpos="right">
+  			<input type="submit" formaction="/ToDoList/controller/index" name="signout" value="Sign out" data-icon="power" data-iconpos="right">
+  		</form>		
+	</div>
+</body>
+		
 		<div data-role="popup" id="purchase" data-theme="a" data-overlay-theme="b" class="ui-content" style="max-width:340px; padding-bottom:2em;">
    		<h3>Purchase Album?</h3>
 		<p>Your download will begin immediately on your mobile device when you purchase.</p>
@@ -66,14 +77,12 @@
    		<a href="index.html" data-rel="back" class="ui-shadow ui-btn ui-corner-all ui-btn-inline ui-mini">Cancel</a>
 		</div>
 		
-		</br>
-		<a href="/ToDoList/controller/addItem" class="ui-btn ui-btn-inline ui-corner-all ui-icon-check ui-btn-icon-right">Add Item</a>
-		<a href="/ToDoList/controller/index" class="ui-btn ui-btn-inline ui-corner-all ui-icon-delete ui-btn-icon-right">Log out</a>
+		
 		
 	</div>
 	</div>
 	
 	<a href="#purchase" data-rel="popup" data-position-to="window" data-transition="pop" data-icon="edit" data-inline="true"></a>
 	<td><a href="/ToDoList/controller/deleteItem" class="ui-icon ui-btn-inline ui-icon-plusthick ui-icon-delete ui-btn-icon-right"></a></td>
-</body>
+		
 </html>

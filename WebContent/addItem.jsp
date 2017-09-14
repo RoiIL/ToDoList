@@ -21,10 +21,10 @@
 				out.println((String)request.getAttribute("message"));
 			}
 		%>
-  			<label for="userName" class="ui-hidden-accessible">User name:</label>
+
   			<textarea name="itemContent" id="info"></textarea>
   			<input type="submit" value="Post It!" data-icon="check" data-iconpos="right">
-  			<input type="submit" formaction="/ToDoList/controller/userPage" name="cancel" value="Cancel" data-icon="delete" data-iconpos="right">
+  			<input type="submit" formaction="/ToDoList/controller/userPage" name="cancel" value="Back" data-icon="back" data-iconpos="right">
 		</form>
 	</div></div></div>
 </body>

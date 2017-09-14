@@ -135,7 +135,6 @@ public class AppRouter extends HttpServlet {
 					try {
 						handleLoginPage(request, response);
 					} catch (ServletException | IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 				} catch (ToDoListException e) {
@@ -160,9 +159,8 @@ public class AppRouter extends HttpServlet {
 	
 	private void handleAddItemPage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
 	{
-		jspPage = "/addItem.jsp";
 		String itemContent = request.getParameter("itemContent");
-		
+		jspPage = "/addItem.jsp";
 		if (null != itemContent)
 		{
 			if (!itemContent.isEmpty())

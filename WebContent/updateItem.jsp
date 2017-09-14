@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Add Item</title>
+<title>Update Item</title>
 <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -26,7 +26,7 @@
   			<textarea name="updateContent" id="info" placeholder="<%=request.getAttribute("itemContent")%>"></textarea>
   			<input type="hidden" value="<%=itemId %>" name="itemId">
   			<input type="submit" value="Done!" data-icon="check" data-iconpos="right">
-  			<input type="submit" formaction="/ToDoList/controller/userPage" name="cancel" value="Cancel" data-icon="delete" data-iconpos="right">
+  			<input type="submit" formaction="/ToDoList/controller/userPage" name="cancel" value="Back" data-icon="back" data-iconpos="right">
 		</form>
 	</div></div></div>
 </body>
