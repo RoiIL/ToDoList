@@ -1,5 +1,9 @@
 package il.ac.hit.todolist.model;
 
+/**
+ * @author Roi Israel & Vladimir Shalmai
+ * a dedicated exception for the ToDoList project, used for simply distinguish the exception thrown by the project 
+ */
 public class ToDoListException extends Exception 
 {
 	/**

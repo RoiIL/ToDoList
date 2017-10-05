@@ -6,6 +6,10 @@ import il.ac.hit.todolist.model.HibernateToDoListDAO;
 import il.ac.hit.todolist.model.User;
 import il.ac.hit.todolist.model.Item;
 
+/**
+ * @author Roi Israel & Vladimir Shalmai
+ * a simple test application for testing the database connectivity and functions
+ */
 public class TestApp {
 
 	public static void main(String[] args) throws ToDoListException {

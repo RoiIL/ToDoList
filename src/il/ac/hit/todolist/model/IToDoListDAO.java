@@ -1,14 +1,9 @@
 package il.ac.hit.todolist.model;
 import java.util.List;
 
-
 /**
  * @author Roi Israel & Vladimir Shalmai
- * The IToDoListDAO interface for using Hibernate with the ToDoList app database.  
- */
-/**
- * @author IR
- *
+ * The interface for applying connection and usage of the database for the ToDoList project
  */
 public interface IToDoListDAO 
 {

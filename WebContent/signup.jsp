@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1 maximum-scale=1, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>CreateAccount</title>
 <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -38,6 +39,7 @@
   			<input type="password" name="password" id="password" placeholder="Password..." data-clear-btn="true">
   			
   			<input type="submit" value="Create Account" data-icon="check" data-iconpos="right">
+  			<input type="submit" formaction="/ToDoList/controller/index" value="Back" data-icon="back" data-iconpos="right">
 		</form>
 	</div></div></div>
 </body>

@@ -12,6 +12,7 @@ import org.hibernate.cfg.AnnotationConfiguration;
 
 /**
  * @author Vladimir Shalmai & Roi Israel
+ * The class to connect and use the database for the ToDoList project
  */
 
 public class HibernateToDoListDAO implements IToDoListDAO

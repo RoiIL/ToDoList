@@ -18,17 +18,26 @@ import il.ac.hit.todolist.model.ToDoListException;
 import il.ac.hit.todolist.model.User;
 
 /**
+ * @author Roi Israel & Vladimir Shalmai
  * Servlet implementation class AppRouter
- */
-/**
- * @author IR
- *
  */
 @WebServlet("/controller/*")
 public class AppRouter extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+
+	/**
+	 * the router connection to the database via the IToDoListDAO interface
+	 */
 	private IToDoListDAO dao = null;
+	
+	/**
+	 * the dispatcher to route to next URL
+	 */
 	RequestDispatcher dispatcher = null;
+	
+	/**
+	 * the URL text for the requested page
+	 */
 	String jspPage = "/index.jsp";
        
     /**
@@ -49,6 +58,7 @@ public class AppRouter extends HttpServlet {
 		switch(path)
 		{
 		case "/index":
+			request.getSession().invalidate();
 			jspPage = "/index.jsp";
 			break;
 		case "/login":
@@ -117,6 +127,8 @@ public class AppRouter extends HttpServlet {
 					}
 				} catch (ToDoListException e) {
 					e.printStackTrace();
+					request.setAttribute("errorMessage", e.getMessage());
+					jspPage = "/errorPage.jsp";
 				}
 			}
 		}
@@ -154,6 +166,8 @@ public class AppRouter extends HttpServlet {
 					}
 				} catch (ToDoListException e) {
 					e.printStackTrace();
+					request.setAttribute("errorMessage", e.getMessage());
+					jspPage = "/errorPage.jsp";
 				}
 			}
 		}
@@ -174,6 +188,8 @@ public class AppRouter extends HttpServlet {
 			jspPage = "/userPage.jsp";
 		} catch (ToDoListException e) {
 			e.printStackTrace();
+			request.setAttribute("errorMessage", e.getMessage());
+			jspPage = "/errorPage.jsp";
 		}
 	}
 	
@@ -199,6 +215,8 @@ public class AppRouter extends HttpServlet {
 					handleUserPage(request, response);
 				} catch (ToDoListException e) {
 					e.printStackTrace();
+					request.setAttribute("errorMessage", e.getMessage());
+					jspPage = "/errorPage.jsp";
 				}
 			}
 			else
@@ -224,7 +242,7 @@ public class AppRouter extends HttpServlet {
 			{
 				try {
 					Long userId = (Long)request.getSession().getAttribute("userId");
-					long itemId = Long.parseLong(strItemId);
+					Long itemId = Long.parseLong(strItemId);
 					Item item = dao.getItem(userId, itemId);
 					if (null != item)
 					{
@@ -232,6 +250,8 @@ public class AppRouter extends HttpServlet {
 					}
 				} catch (ToDoListException e) {
 					e.printStackTrace();
+					request.setAttribute("errorMessage", e.getMessage());
+					jspPage = "/errorPage.jsp";
 				}
 			}
 		}
@@ -264,6 +284,8 @@ public class AppRouter extends HttpServlet {
 					handleUserPage(request, response);
 				} catch (ToDoListException e) {
 					e.printStackTrace();
+					request.setAttribute("errorMessage", e.getMessage());
+					jspPage = "/errorPage.jsp";
 				}
 			}
 			else
@@ -277,6 +299,8 @@ public class AppRouter extends HttpServlet {
 					request.setAttribute("itemId", strItemId);
 				} catch (ToDoListException e) {
 					e.printStackTrace();
+					request.setAttribute("errorMessage", e.getMessage());
+					jspPage = "/errorPage.jsp";
 				}
 			}
 		}
@@ -290,6 +314,8 @@ public class AppRouter extends HttpServlet {
 				request.setAttribute("itemId", strItemId);
 			} catch (ToDoListException e) {
 				e.printStackTrace();
+				request.setAttribute("errorMessage", e.getMessage());
+				jspPage = "/errorPage.jsp";
 			}
 		}
 	}

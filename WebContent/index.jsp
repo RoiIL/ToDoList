@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta name="viewport" content="width=device-width, target-densitydpi=device-dpi, initial-scale=1 maximum-scale=1, user-scalable=no">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <title>To Do List</title>
 <link rel="stylesheet" href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
@@ -16,9 +17,7 @@
     		<a href="/ToDoList/controller/login" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Log In</a>
     		<a href="/ToDoList/controller/signup" class="ui-btn ui-btn-inline ui-corner-all ui-icon-user ui-btn-icon-left">Sign Up</a>
     		<br>
-    		<a href="#anylink" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Search</a>
-			<a href="#bing" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Bing</a>
-			<a href="#video" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-search ui-btn-icon-right">Video</a>
+			<a href="#video" data-rel="dialog" class="ui-btn ui-btn-inline ui-corner-all ui-icon-video ui-btn-icon-left">Our Video</a>
   		</div>
 	</div>
 
