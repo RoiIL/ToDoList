@@ -1,6 +1,7 @@
 package il.ac.hit.todolist.model;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.HibernateException;
@@ -299,6 +300,7 @@ public class HibernateToDoListDAO implements IToDoListDAO
 		{
 			try
 			{
+				item.setDate(new Date());
 				session = factory.openSession();
 				transaction = session.beginTransaction();
 				session.update(item);

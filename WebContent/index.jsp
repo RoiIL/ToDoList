@@ -23,20 +23,12 @@
 
 	<div data-role="page" id="video">
 	<div data-role="header">
-	<h1>Testing the dialog</h1>
+	<h1>ToDoList Video</h1>
 	
 	<div data-role="content">
 		<iframe width="100%" height="360"
-			src="//www.youtube.com/embed/X-RsfO0uARI?rel=0" frameborder="0" allowfullscreen>
+			src="https://www.youtube.com/embed/CuEXLH3KirE?rel=0" frameborder="0" allowfullscreen>
 		</iframe> 
 	</div></div></div>
-	
-	<div data-role="page" id="bing">
-	<div data-role="header">
-		<h1>Bing as dialog</h1>
-	<div data-role="content">
-		<iframe width="100%" height="750" src="//www.bing.com"></iframe> 
-	</div></div></div>
-	
 </body>
 </html>
